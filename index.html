@@ -2,15 +2,32 @@
 
 <html>
 <head>
-<script src = 'mainscript.js'>
 
-</script>
 <link rel = "stylesheet" href = "style.css" type = "text/css" />
 
   </head>
-<body>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+
+  <div id = "entirepage">
+  </div>
 
 
+  <div id = "labelcontainer">
+      <label id = "citylabel">Enter your location</br><h6>(address,city,state,zip)</h6></label>
+  </div>
+
+
+
+
+<div id = "inputbox">
+  <input onblur="this.focus()" autofocus spellcheck="false"  id = "cityinput" type = "text" maxlength = "50" ></input>
+</div>
+
+
+
+<script src = 'mainscript.js'>
+
+</script>
 </body>
 
 
