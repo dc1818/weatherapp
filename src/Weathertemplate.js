@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/weathertemplate.css';
-class Weathertemplate extends React.component
+
+class Weathertemplate extends React.Component
 {
   constructor(props)
   {
@@ -11,8 +12,10 @@ class Weathertemplate extends React.component
 
   render()
   {
-    return (<div>Test</div>);
+    return (<div>Your weather in </div>);
   }
 
 
 }
+
+export default Weathertemplate
