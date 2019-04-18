@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+body{
+  font-family: 'Oswald', sans-serif;
+  color:white;
+}
+
+#container
+{
+
+}
+#returncontainer
+{
+  position:relative;
+  margin:auto;
+  width:100%;
+  top:70%;
+  text-align:center;
+
+}
+#returnbutton
+{
+  width:200px;
+  height:50px;
+  position:relative;
+  color:black;
+
+#city
+{
+  font-size:50px;
+}
+
+}
+h1
+{
+  background-color:red;
+  position:relative;
+  margin:auto;
+  text-align:center;
+  top:300px;
+}

@@ -4,6 +4,7 @@ body{
 }
 
 
+
 #container
 {
 
@@ -11,21 +12,23 @@ body{
   margin:auto;
   width:40%;
   text-align:center;
-
+  background-color:rgba(0,0,50,0.2);
   top:150px;
   height:500px;
+  min-width:300px;
 }
 #city
 {
-  background-color:rgba(255,255,255,0.5);
+  background-color:rgba(0,0,50,0.2);
   font-size:50px;
-  color:gray;
+  color:white;
   position:relative;
   margin:auto;
-  width:50%;
+
+  width:auto;
   box-shadow:0px 0px 5px black;
   border-radius:5px 5px;
-  text-shadow: 1px 2px 1px black, 0px 1px 1px black;
+  text-shadow: 1px 2px 1px black, 0px 1px 3px black,0px 2px 1px black;
   text-align:center;
 }
 
@@ -63,4 +66,6 @@ body{
   font-size:40px;
   text-shadow:0px 2px 2px black;
   position:relative;
+  min-width:250px;
+  //background-color:black;
 }
