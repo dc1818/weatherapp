@@ -23,14 +23,19 @@ class Formpage extends React.Component
 
   componentDidMount()
   {
+    this.mounted=true;
+
       document.addEventListener('keydown',this.checkForEnter);
       console.log(this.props.displayStatus);
+
+
+
 
      //ReactDOM.findDOMNode(this).addEventListener('nv-event', this._handleNVEvent);
   }
   componentWillUnmount()
   {
-
+      document.removeEventListener('keydown',this.checkForEnter);
   }
 
   checkForEnter(event)
@@ -39,11 +44,15 @@ class Formpage extends React.Component
       {
           this.setState({enterTyped:true,displayFormPage:false});
           this.props.displayStatus(false);
+          this.props.inputValue(this.state.inputValue);
           console.log(this.state.enterTyped);
       }
       else
       {
-            this.inputbox.current.focus();
+
+          this.inputbox.current.focus();
+
+
       }
 
   }
@@ -65,24 +74,9 @@ class Formpage extends React.Component
   }
 
 
-
-
-
-
-
-
-
-
-
-
   render()
   {
     let infolabel;
-
-
-
-
-
 
     if(this.state.displayLabel===true)
     {

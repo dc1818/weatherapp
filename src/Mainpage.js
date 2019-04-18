@@ -11,8 +11,9 @@ class Mainpage extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {displayFormPage:true,displayWeatherInformation:false}
+    this.state = {displayFormPage:true,displayWeatherInformation:false,inputValue:""}
     this.getFormSubmitStatus = this.getFormSubmitStatus.bind(this);
+    this.getInputValue = this.getInputValue.bind(this);
   }
 
   getFormSubmitStatus(isTrue)
@@ -21,17 +22,21 @@ class Mainpage extends React.Component
 
   }
 
+  getInputValue(input)
+  {
+      this.setState({inputValue:input});
+  }
 
 
   render()
   {
     if(this.state.displayFormPage===true)
     {
-      return (<Formpage displayStatus = {this.getFormSubmitStatus} />);
+      return (<Formpage displayStatus = {this.getFormSubmitStatus} inputValue = {this.getInputValue} />);
     }
     else
     {
-      return (<Weathertemplate/>);
+      return (<Weathertemplate location = {this.state.inputValue}/>);
     }
 
 

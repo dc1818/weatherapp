@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+body{
+  font-family: 'Oswald', sans-serif;
+}
+
+
+#container
+{
+
+  position:relative;
+  margin:auto;
+  width:40%;
+  text-align:center;
+
+  top:150px;
+  height:500px;
+}
+#city
+{
+  background-color:rgba(255,255,255,0.5);
+  font-size:50px;
+  color:gray;
+  position:relative;
+  margin:auto;
+  width:50%;
+  box-shadow:0px 0px 5px black;
+  border-radius:5px 5px;
+  text-shadow: 1px 2px 1px black, 0px 1px 1px black;
+  text-align:center;
+}
+
+
+#weatherblurb
+{
+  position:relative;
+  margin:auto;
+  width:50%;
+  font-size:25px;
+  text-align:center;
+  text-shadow:0px 0px 1px white;
+}
+#temperature
+{
+    margin-top:200px;
+
+    font-size:45px;
+    text-align:center;
+    border-radius:5px 5px;
+    position:relative;
+    width:100%;
+    text-shadow:0px 2px 2px black;
+
+
+}
+#temperatureunit
+{
+
+}
+#shortForecast
+{
+  top:200px;
+  text-align:center;
+  font-size:40px;
+  text-shadow:0px 2px 2px black;
+  position:relative;
+}
