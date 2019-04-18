@@ -57,13 +57,13 @@ class Weathertemplate extends React.Component
    const response = await fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=UnKAjeHAB6sFQGrli30eJCYQis96tuaO&location=${this.props.location}`);
    const data = await response.json();
    const locationData = await data.results[0].locations[0]
-
+   console.log(locationData);
 
 
   //let lat = await locationData.displayLatLng.lat;
    //let long = await locationData.displayLatLng.lng;
   let latlong = await [locationData.displayLatLng.lat,locationData.displayLatLng.lng];
-  this.setState({city:locationData.adminArea5});
+  this.setState({city:locationData.adminArea5,country:locationData.adminArea1});
   return latlong
 }
 
@@ -101,7 +101,7 @@ class Weathertemplate extends React.Component
 
   requireCSSCheck()
   {
-      if(this.state.shortForecast.toString().toLowerCase()==="mostly sunny")
+      if(this.state.shortForecast.toString().toLowerCase()==="mostly sunny" || this.state.shortForecast.toString().toLowerCase()==="partly cloudy" || this.state.shortForecast.toString().toLowerCase()==="mostly cloudy")
       {
           console.log("mostly sunny css loaded");
         require('./css/mostlysunny.css');
@@ -125,7 +125,7 @@ class Weathertemplate extends React.Component
 
   setHtml()
   {
-    if(this.state.shortForecast.toString().toLowerCase()==="mostly sunny")
+    if(this.state.shortForecast.toString().toLowerCase()==="mostly sunny" || this.state.shortForecast.toString().toLowerCase()==="partly cloudy" || this.state.shortForecast.toString().toLowerCase()==="mostly cloudy")
     {
       console.log("mostly sunny html loaded");
       this.setState({html:<div id = "wholecontainer">
@@ -141,8 +141,8 @@ class Weathertemplate extends React.Component
         console.log("sunny html loaded");
         this.setState({html:<div id = "wholecontainer">
         <div class="wrapper">
-          <div class="round round1"></div>
-          <div class="round round2"></div>
+          <div class = "round round1"></div>
+
           <div class="round sun"></div>
         </div>
       </div>});
@@ -175,7 +175,14 @@ class Weathertemplate extends React.Component
     else if(this.state.shortForecast===404)
     {
       console.log('404 html loaded');
-      this.setState({html:<div id = "container"><div id = "city">Found City:{this.state.city}<br/></div><h1>No weather data found(404)</h1><div id = "returncontainer"><button onClick = {()=>{this.props.formPageStatus(true);this.setState({location:null,shortForecast:null});}} id = "returnbutton">Return</button></div></div>});
+      if(this.state.city==="")
+      {
+          this.setState({html:<div id = "container"><div id = "city">NO CITY FOUND</div><h1>No weather data found(404)</h1><div id = "returncontainer"><button onClick = {()=>{this.props.formPageStatus(true);this.setState({location:null,shortForecast:null,country:null});}} id = "returnbutton">Return</button></div></div>});
+      }
+      else if(this.state.city!=="")
+      {
+        this.setState({html:<div id = "container"><div id = "city">City found: {this.state.city}</div><h1>No weather data found(404)</h1><div id = "returncontainer"><button onClick = {()=>{this.props.formPageStatus(true);this.setState({location:null,shortForecast:null,country:null});}} id = "returnbutton">Return</button></div></div>})
+      }
     }
 
 
@@ -189,6 +196,7 @@ class Weathertemplate extends React.Component
 
   this.runApis();
 }
+
 
     runApis()
   {
@@ -221,7 +229,7 @@ class Weathertemplate extends React.Component
     }
     else
     {
-      return(<div id = "container">{this.state.html}<div id = "weatherblurb">Your weather in:</div><div id = "city">{this.state.city}</div><div id = "shortForecast">{this.state.shortForecast}</div><div id = "temperature">{this.state.temperature}&#176;<span id = "temperatureunit">{this.state.temperatureUnit}</span></div></div>);
+      return(<div id = "container">{this.state.html}<div id = "weatherblurb">Your weather in:</div><div id = "city">{this.state.city}</div><div id = "country">{this.state.country}</div><div id = "shortForecast">{this.state.shortForecast}</div><div id = "temperature">{this.state.temperature}&#176;<span id = "temperatureunit">{this.state.temperatureUnit}</span></div><div id = "returncontainer"><button onClick = {()=>{this.props.formPageStatus(true);this.setState({location:null,shortForecast:null,country:null});}} id = "returnbutton">Return</button></div></div>);
     }
 
   }

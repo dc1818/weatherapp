@@ -3,7 +3,11 @@ body
   background-color:rgba(0, 100, 215, 1);
 }
 
-
+#container
+{
+  background-color:rgba(0,0,50,0.2);
+  height:auto;
+}
 
 .wrapper {
     width: 100%;
@@ -27,6 +31,22 @@ body
     margin-left: 0px;
 }
 
+#returncontainer
+{
+  position:relative;
+  margin:auto;
+  width:100%;
+  top:10%;
+  text-align:center;
+
+}
+#returnbutton
+{
+  width:200px;
+  height:50px;
+  position:relative;
+  color:black;
+}
 .sun {
     z-index: -1;
     background-color: yellow;
@@ -35,6 +55,7 @@ body
     top:50%;
     animation: sunny 5s linear infinite alternate;
 }
+
 
 @keyframes sunny {
     0% {

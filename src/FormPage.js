@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './css/initialstyle.css';
 
 
 
@@ -8,8 +8,8 @@ class Formpage extends React.Component
   constructor(props)
   {
     super(props);
-    //this.inputbox = React.createRef();
-      this.state = {displayLabel:true,enterTyped:false,displayformPage:true,inputValue :""};
+
+      this.state = {displayLabel:true,enterTyped:false,displayformPage:true,inputValue :"",fontSize:200};
       this.checkForEnter = this.checkForEnter.bind(this);
       this.changeDisplayLabelStatus = this.changeDisplayLabelStatus.bind(this);
       this.updateInput = this.updateInput.bind(this);
@@ -44,6 +44,7 @@ class Formpage extends React.Component
       {
           this.setState({enterTyped:true,displayFormPage:false});
           this.props.displayStatus(false);
+
           this.props.inputValue(this.state.inputValue);
           console.log(this.state.enterTyped);
       }
@@ -70,6 +71,7 @@ class Formpage extends React.Component
 
   updateInput(event)
   {
+
     this.setState({inputValue:event.target.value});
   }
 

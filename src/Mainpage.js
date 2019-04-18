@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './css/initialstyle.css';
+//import './css/initialstyle.css';
 import Formpage from './Formpage.js';
 import Weathertemplate from './Weathertemplate.js';
 
@@ -31,6 +31,7 @@ class Mainpage extends React.Component
   getFormPageStatus(status)
   {
     this.setState({displayFormPage:status,inputValue:null});
+
     if(this.state.displayFormPage===true)
     {
       this.setState({inputValue:null});

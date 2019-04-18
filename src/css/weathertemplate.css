@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 body{
   font-family: 'Oswald', sans-serif;
+  background-color:black;
 }
 
 
@@ -12,7 +13,7 @@ body{
   margin:auto;
   width:40%;
   text-align:center;
-  background-color:rgba(0,0,50,0.2);
+  //background-color:rgba(0,0,50,0.2);
   top:150px;
   height:500px;
   min-width:300px;
@@ -30,6 +31,27 @@ body{
   border-radius:5px 5px;
   text-shadow: 1px 2px 1px black, 0px 1px 3px black,0px 2px 1px black;
   text-align:center;
+}
+
+#returncontainer
+{
+  position:relative;
+  margin:auto;
+  width:100%;
+  top:20%;
+  text-align:center;
+
+}
+#returnbutton
+{
+  width:200px;
+  height:50px;
+  position:relative;
+  color:black;
+}
+#country
+{
+  font-size:20px;
 }
 
 

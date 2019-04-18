@@ -4,10 +4,7 @@ body{
   color:white;
 }
 
-#container
-{
 
-}
 #returncontainer
 {
   position:relative;
@@ -23,13 +20,13 @@ body{
   height:50px;
   position:relative;
   color:black;
-
+}
 #city
 {
   font-size:50px;
 }
 
-}
+
 h1
 {
   background-color:red;

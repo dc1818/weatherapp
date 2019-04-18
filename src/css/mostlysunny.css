@@ -1,17 +1,13 @@
 /*cloudy sunny day*/
 
-* {
-    box-sizing: border-box;
-    font-family: 'Oswald', sans-serif;
-    color: #fff;
+body
+{
+  background: rgba(30, 144, 255, 0.7);
 }
-
-body {
-    background: rgba(30, 144, 255, 0.7);
-    margin: 1rem;
-
+#container
+{
+  background-color:rgba(0,0,50,0.2);
 }
-
 
 .wrapper {
     width: 240px;
@@ -47,8 +43,24 @@ body {
     z-index: -1;
     background-color: yellow;
     box-shadow: 0px 0px 100px 10px yellow;
-    margin-left: 40px;
+    margin-left: 75px;
     animation: sunny 5s linear infinite alternate;
+}
+#returncontainer
+{
+  position:relative;
+  margin:auto;
+  width:100%;
+  top:10%;
+  text-align:center;
+
+}
+#returnbutton
+{
+  width:200px;
+  height:50px;
+  position:relative;
+  color:black;
 }
 
 @keyframes sunny {
