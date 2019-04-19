@@ -1,5 +1,8 @@
 import React from 'react';
+import Dimensions from 'react-dimensions';
 import './css/initialstyle.css';
+import {SizeME} from 'react-sizeme';
+
 
 
 
@@ -9,7 +12,7 @@ class Formpage extends React.Component
   {
     super(props);
 
-      this.state = {displayLabel:true,enterTyped:false,displayformPage:true,inputValue :"",fontSize:200};
+      this.state = {displayLabel:true,enterTyped:false,displayformPage:true,inputValue :""};
       this.checkForEnter = this.checkForEnter.bind(this);
       this.changeDisplayLabelStatus = this.changeDisplayLabelStatus.bind(this);
       this.updateInput = this.updateInput.bind(this);
@@ -27,7 +30,7 @@ class Formpage extends React.Component
 
       document.addEventListener('keydown',this.checkForEnter);
       console.log(this.props.displayStatus);
-
+      require ('./css/initialstyle.css');
 
 
 
@@ -72,7 +75,19 @@ class Formpage extends React.Component
   updateInput(event)
   {
 
+
+      if(this.state.inputValue.length>15)
+      {
+        this.setState({font:'400%'});
+        console.log(this.state.inputValue.length);
+      }
+      else if(this.state.inputValue.length==0)
+      {
+        this.setState({font:'1000%'});
+      }
     this.setState({inputValue:event.target.value});
+
+
   }
 
 
@@ -95,7 +110,7 @@ class Formpage extends React.Component
     </div>
     <div id = "inputbox">
 
-    <input ref = {this.inputbox} onClick = {()=>{this.changeDisplayLabelStatus(false)}} onChange = {(event)=>{this.changeDisplayLabelStatus(false,this); this.updateInput(event);}} onBlur = {()=>{this.changeDisplayLabelStatus(true)}}   autoFocus spellcheck="false"  id = "cityinput" type = "text" maxlength = "50" ></input>
+    <textarea style = {{fontSize:this.state.font,overflow:"hidden"}} ref = {this.inputbox} onClick = {()=>{this.changeDisplayLabelStatus(false)}} onChange = {(event)=>{this.changeDisplayLabelStatus(false,this); this.updateInput(event);}} onBlur = {()=>{this.changeDisplayLabelStatus(true)}}   autoFocus spellcheck="false"  id = "cityinput" type = "text" maxlength = "50" ></textarea>
     {console.log(this.state.inputValue)}
     </div>
     <script src = 'mainscript.js'>
