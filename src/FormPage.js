@@ -1,7 +1,7 @@
 import React from 'react';
-import Dimensions from 'react-dimensions';
+
 import css from './css/initialstyle.css';
-import {SizeME} from 'react-sizeme';
+
 
 
 
