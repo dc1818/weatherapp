@@ -1,6 +1,6 @@
 import React from 'react';
 
-import css from './css/initialstyle.css';
+import './css/initialstyle.css';
 
 
 
@@ -81,7 +81,7 @@ class Formpage extends React.Component
         this.setState({font:'400%'});
         console.log(this.state.inputValue.length);
       }
-      else if(this.state.inputValue.length==0)
+      else if(this.state.inputValue.length===0)
       {
         this.setState({font:'1000%'});
       }

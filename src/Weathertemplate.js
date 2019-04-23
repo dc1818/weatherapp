@@ -3,9 +3,9 @@ import './css/weathertemplate.css';
 
 
 
-const weathertemplate = "https://api.weather.gov/points/";
+
 const geocodekey  = "UnKAjeHAB6sFQGrli30eJCYQis96tuaO";
-const websitetemplate = `http://www.mapquestapi.com/geocoding/v1/address?key=${geocodekey}`;
+
 
 
 
@@ -176,7 +176,7 @@ class Weathertemplate extends React.Component
     else if(this.state.city==="" || this.state.shortForecast===404)
     {
       console.log('404 html loaded');
-      if(this.state.city==="" && this.state.country!="")
+      if(this.state.city==="" && this.state.country!=="")
       {
 
         console.log("first 404 case loaded");
