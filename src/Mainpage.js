@@ -11,10 +11,11 @@ class Mainpage extends React.Component
   constructor(props)
   {
     super(props);
-    this.state = {displayFormPage:true,displayWeatherInformation:false,inputValue:null}
+    this.state = {displayFormPage:true,displayWeatherInformation:false,inputValue:null,dataReady:false};
     this.getFormSubmitStatus = this.getFormSubmitStatus.bind(this);
     this.getInputValue = this.getInputValue.bind(this);
     this.getFormPageStatus = this.getFormPageStatus.bind(this);
+    this.checkForDataReady = this.checkForDataReady.bind(this);
   }
 
   getFormSubmitStatus(isTrue)
@@ -37,6 +38,14 @@ class Mainpage extends React.Component
       this.setState({inputValue:null});
     }
   }
+  checkForDataReady(value)
+  {
+    console.log('check if api data is ready to be displayed');
+    if(value)
+    {
+      this.setState({dataReady:true});
+    }
+  }
 
   render()
   {
@@ -48,7 +57,7 @@ class Mainpage extends React.Component
     {
 
         console.log(this.state.inputValue);
-      return (<Weathertemplate location = {this.state.inputValue} formPageStatus = {this.getFormPageStatus}/>);
+      return (<Weathertemplate location = {this.state.inputValue} dataReady = {this.checkForDataReady} displayTemplate = {this.state.dataReady} formPageStatus = {this.getFormPageStatus}/>);
     }
     else{
       return null;

@@ -76,6 +76,7 @@ class Weathertemplate extends React.Component
     {
         console.log(initialapidata.status);
       this.setState({shortForecast:404});
+      this.props.dataReady(true);
       this.requireCSSCheck();
       this.setHtml();
     }
@@ -89,9 +90,11 @@ class Weathertemplate extends React.Component
       let shortForecast = period.shortForecast;
       //let shortForecast = "sunny";
       this.setState({name:period.name,shortForecast:shortForecast,temperature:period.temperature,temperatureUnit:period.temperatureUnit,windDirection:period.windDirection,windSpeed:period.windSpeed});
-
+      this.props.dataReady(true);
+      console.log(this.state);
       this.requireCSSCheck();
       this.setHtml();
+
       //this.requireCSSCheck("Sunny");
       //this.setHtml("Sunny");
       return period;
@@ -101,7 +104,8 @@ class Weathertemplate extends React.Component
 
   requireCSSCheck()
   {
-      if(this.state.city!=="" && this.state.shortForecast.toString().toLowerCase()==="mostly sunny" || this.state.shortForecast.toString().toLowerCase()==="partly cloudy" || this.state.shortForecast.toString().toLowerCase()==="mostly cloudy" )
+    console.log("run css checker");
+      if(this.state.city!=="" && this.state.shortForecast.toString().toLowerCase()==="mostly sunny" || this.state.shortForecast.toString().toLowerCase()==="partly cloudy" || this.state.shortForecast.toString().toLowerCase()==="mostly cloudy" || this.state.shortForecast.toString().toLowerCase()==="partly sunny")
       {
           console.log("mostly sunny css loaded");
         require('./css/mostlysunny.css');
@@ -126,7 +130,8 @@ class Weathertemplate extends React.Component
 
   setHtml()
   {
-    if(this.state.city!=="" && this.state.shortForecast.toString().toLowerCase()==="mostly sunny" || this.state.shortForecast.toString().toLowerCase()==="partly cloudy" || this.state.shortForecast.toString().toLowerCase()==="mostly cloudy")
+    console.log("run html checker");
+    if(this.state.city!=="" && this.state.shortForecast.toString().toLowerCase()==="mostly sunny" || this.state.shortForecast.toString().toLowerCase()==="partly cloudy" || this.state.shortForecast.toString().toLowerCase()==="mostly cloudy" ||  this.state.shortForecast.toString().toLowerCase()==="partly sunny")
     {
       console.log("mostly sunny html loaded");
       this.setState({html:<div id = "wholecontainer">
@@ -196,7 +201,9 @@ class Weathertemplate extends React.Component
   componentWillMount()
   {
     //console.log(this.state.location);
+    console.log('first mount');
     console.log(this.state.location);
+
 
   this.runApis();
 }
@@ -234,13 +241,43 @@ componentWillUnmount()
     }
     else if(this.props.location===null)
     {
+
       return null;
+    }
+    else if(this.props.dataReady===false)
+    {
+      console.log('api running');
+      return <div>LOADING</div>
     }
     else
     {
-      console.log('render last else loaded');
-      return(<div id = "container">{this.state.html}<div id = "weatherblurb">Your weather in:</div><div id = "city">{this.state.city}</div><div id = "country">{this.state.country}</div><div id = "shortForecast">{this.state.shortForecast}</div><div id = "temperature">{this.state.temperature}&#176;<span id = "temperatureunit">{this.state.temperatureUnit}</span></div><div id = "returncontainer"><button onClick = {()=>{this.props.formPageStatus(true);this.setState({location:null,shortForecast:null,country:null});}} id = "returnbutton">Return</button></div></div>);
+        if(this.state.shortForecast!==null)
+        {
+          console.log('render last else loaded');
+          return(<div id = "container">{this.state.html}<div id = "weatherblurb">Your weather in:</div><div id = "city">{this.state.city}</div><div id = "country">{this.state.country}</div><div id = "shortForecast">{this.state.shortForecast}</div><div id = "temperature">{this.state.temperature}&#176;<span id = "temperatureunit">{this.state.temperatureUnit}</span></div><div id = "returncontainer"><button onClick = {()=>{this.props.formPageStatus(true);this.setState({location:null,shortForecast:null,country:null});}} id = "returnbutton">Return</button></div></div>);
+        }
+        else
+        {
+          return (<div class = "mainpage">
+          <div onClick = {()=>{this.changeDisplayLabelStatus(true)}} id = "entirepage">
+          </div>
+          <div id = "labelcontainer">
+            <label id = "citylabel">Enter your location</label>
+          </div>
+          <div id = "inputbox">
+
+          <textarea disabled={true} style = {{fontSize:this.state.font,overflow:"hidden"}} ref = {this.inputbox} onClick = {()=>{this.changeDisplayLabelStatus(false)}} onChange = {(event)=>{this.changeDisplayLabelStatus(false,this); this.updateInput(event);}} onBlur = {()=>{this.changeDisplayLabelStatus(true)}}   autoFocus spellcheck="false"  id = "cityinput" type = "text" maxlength = "50" ></textarea>
+          {console.log(this.state.inputValue)}
+          </div>
+          <script src = 'mainscript.js'>
+          </script>
+          </div>)
+
+
+        }
+
     }
+
 
   }
 

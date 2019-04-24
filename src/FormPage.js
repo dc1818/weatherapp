@@ -17,6 +17,7 @@ class Formpage extends React.Component
       this.changeDisplayLabelStatus = this.changeDisplayLabelStatus.bind(this);
       this.updateInput = this.updateInput.bind(this);
       this.inputbox = React.createRef();
+      
 
 }
 
@@ -86,9 +87,8 @@ class Formpage extends React.Component
         this.setState({font:'1000%'});
       }
     this.setState({inputValue:event.target.value});
+}
 
-
-  }
 
 
   render()
