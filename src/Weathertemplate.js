@@ -55,7 +55,7 @@ class Weathertemplate extends React.Component
   {
    //const response = await fetch(websitetemplate+`&location=${address}`);
      this.setState({loadingBarProgress:0});
-   const response = await fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=UnKAjeHAB6sFQGrli30eJCYQis96tuaO&location=${this.props.location}`);
+   const response = await fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=UnKAjeHAB6sFQGrli30eJCYQis96tuaO&location=${this.props.location}`);
    const data = await response.json();
    const locationData = await data.results[0].locations[0]
    console.log(locationData);
