@@ -31,7 +31,7 @@ async function pickApartForecast(forecast,locationData)
 
 async function reverseGeoCode(geocode)
 {
-  const reverseGeoCodeApi = await fetch(`http://open.mapquestapi.com/geocoding/v1/reverse?key=${geocodekey}&location=${geocode[1]},${geocode[0]}&includeRoadMetadata=true&includeNearestIntersection=true`);
+  const reverseGeoCodeApi = await fetch(`https://open.mapquestapi.com/geocoding/v1/reverse?key=${geocodekey}&location=${geocode[1]},${geocode[0]}&includeRoadMetadata=true&includeNearestIntersection=true`);
   const reverseGeoData = await reverseGeoCodeApi.json();
   console.log(reverseGeoData);
   return await reverseGeoData;
