@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 body{
   font-family: 'Oswald', sans-serif;
-  background-color:black;
+    //background: rgba(30, 144, 255, 0.7);
+    background-color:black;
 }
 
 
+#loadingBar
+{
+  position:relative;
+  width:50%;
+  background-color:red;
+   top:20px;
+
+}
 
 #container
 {
@@ -12,20 +21,22 @@ body{
   position:relative;
   margin:auto;
   width:40%;
+
+  box-shadow: 0px 1px 10px 2px black;
   text-align:center;
-  //background-color:rgba(0,0,50,0.2);
-  top:150px;
-  height:500px;
+  //background-color:rgba(0,0,50,.3);
+  top:100px;
+  height:300px;
   min-width:300px;
 }
 #city
 {
-  background-color:rgba(0,0,50,0.2);
+  background-color:rgba(0,0,255,.25);
   font-size:50px;
   color:white;
   position:relative;
   margin:auto;
-
+  top:10px;
   width:auto;
   box-shadow:0px 0px 5px black;
   border-radius:5px 5px;
@@ -37,21 +48,34 @@ body{
 {
   position:relative;
   margin:auto;
-  width:100%;
-  top:20%;
+  font-family:Oswald;
+  top:10%;
   text-align:center;
 
 }
 #returnbutton
 {
-  width:200px;
+  width:100%;
+  background-color:rgba(0,0,255,.25);
   height:50px;
   position:relative;
-  color:black;
+  font-size:25px;
+  margin-top:0px;
+
+  margin-bottom:15px;
+  font-weight:500;
+  color:white;
+  border-radius:5px 5px;
+  border-style:none;
 }
 #country
 {
+  position:relative;
+
+  width:20px;
+  margin:auto;
   font-size:20px;
+  top:20px;
 }
 
 
@@ -59,31 +83,59 @@ body{
 {
   position:relative;
   margin:auto;
+  background-color:rgba(255,0,0,.7);
   width:50%;
   font-size:25px;
+
+  box-shadow:0 0 5px .5px red;
   text-align:center;
   text-shadow:0px 0px 1px white;
 }
 #temperature
 {
-    margin-top:200px;
-
+    margin-top:30px;
+    margin-left:auto;
+    margin-right:auto;
+  background-color:rgba(255, 0, 0, .7);
+    //box-shadow:0 0 5px 5px rgba(0, 0, 69, 1);
     font-size:45px;
     text-align:center;
     border-radius:5px 5px;
     position:relative;
-    width:100%;
-    text-shadow:0px 2px 2px black;
+    width:75%;
+    text-shadow:0px 0px 20px 20px blue;
 
 
 }
-#temperatureunit
+#error
 {
+  position:relative;
+  margin:auto;
+  background-color:rgba(0,0,255,0.5);
+  text-align:center;
+  font-size:40px;
+  width:50%;
+  top:300px;
+}
+#returnbuttonerror
+{
+  width:100%;
+  background-color:rgba(255,0,0,.7);
+  height:50px;
+  position:relative;
+  font-size:25px;
+  margin-top:0px;
 
+  margin-bottom:15px;
+  font-weight:500;
+  color:white;
+  border-radius:5px 5px;
+  border-style:none;
 }
 #shortForecast
 {
-  top:200px;
+  //background-color:red;
+  top:20px;
   text-align:center;
   font-size:40px;
   text-shadow:0px 2px 2px black;

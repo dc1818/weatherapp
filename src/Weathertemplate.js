@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/weathertemplate.css';
+import LoadingBar from 'react-top-loading-bar'
 
 
 
@@ -53,7 +54,7 @@ class Weathertemplate extends React.Component
   async runGeoCodeApi()
   {
    //const response = await fetch(websitetemplate+`&location=${address}`);
-
+     this.setState({loadingBarProgress:0});
    const response = await fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=UnKAjeHAB6sFQGrli30eJCYQis96tuaO&location=${this.props.location}`);
    const data = await response.json();
    const locationData = await data.results[0].locations[0]
@@ -77,8 +78,8 @@ class Weathertemplate extends React.Component
         console.log(initialapidata.status);
       this.setState({shortForecast:404});
       this.props.dataReady(true);
-      this.requireCSSCheck();
-      this.setHtml();
+      //this.requireCSSCheck();
+      //this.setHtml();
     }
     else
     {
@@ -92,8 +93,8 @@ class Weathertemplate extends React.Component
       this.setState({name:period.name,shortForecast:shortForecast,temperature:period.temperature,temperatureUnit:period.temperatureUnit,windDirection:period.windDirection,windSpeed:period.windSpeed});
       this.props.dataReady(true);
       console.log(this.state);
-      this.requireCSSCheck();
-      this.setHtml();
+      //this.requireCSSCheck();
+      //this.setHtml();
 
       //this.requireCSSCheck("Sunny");
       //this.setHtml("Sunny");
@@ -109,6 +110,11 @@ class Weathertemplate extends React.Component
       {
           console.log("mostly sunny css loaded");
         require('./css/mostlysunny.css');
+      }
+      else if(this.state.shortForecast.toString().toLowerCase()==="cloudy")
+      {
+        console.log('cloudy css loaded');
+        require('./css/cloudy.css');
       }
       else if(this.state.shortForecast.toString().toLowerCase()==="sunny")
       {
@@ -151,6 +157,14 @@ class Weathertemplate extends React.Component
 
           <div class="round sun"></div>
         </div>
+      </div>});
+    }
+    else if(this.state.shortForecast.toString().toLowerCase()==="cloudy")
+    {
+      console.log("cloudy html loaded");
+      this.setState({html:<div class="wrapper">
+      <div class="round round1"></div>
+      <div class="round round2"></div>
       </div>});
     }
     else if(this.state.shortForecast.toString().toLowerCase().indexOf('rain')>-1 || this.state.shortForecast.toString().toLowerCase().indexOf('showers')>-1)
@@ -200,6 +214,7 @@ class Weathertemplate extends React.Component
 
   componentWillMount()
   {
+
     //console.log(this.state.location);
     console.log('first mount');
     console.log(this.state.location);
@@ -219,6 +234,7 @@ componentWillUnmount()
 
     this.runGeoCodeApi().then((result)=>{this.runWeatherApi(result)});
     console.log(this.state.location);
+    this.setState({loadingBarProgress:100});
   }
 
 
@@ -237,7 +253,7 @@ componentWillUnmount()
     if(this.state.shortForecast===404 || this.state.city==="")
     {
         console.log('render first if loaded');
-      return (<div>{this.state.html}</div>);
+      return (<div id = "error">No weather data found<button onClick = {()=>{this.props.formPageStatus(true);this.setState({location:null,shortForecast:null,country:null});}} id = "returnbuttonerror">Return</button></div>);
     }
     else if(this.props.location===null)
     {
@@ -253,6 +269,7 @@ componentWillUnmount()
     {
         if(this.state.shortForecast!==null)
         {
+
           console.log('render last else loaded');
           return(<div id = "container">{this.state.html}<div id = "weatherblurb">Your weather in:</div><div id = "city">{this.state.city}</div><div id = "country">{this.state.country}</div><div id = "shortForecast">{this.state.shortForecast}</div><div id = "temperature">{this.state.temperature}&#176;<span id = "temperatureunit">{this.state.temperatureUnit}</span></div><div id = "returncontainer"><button onClick = {()=>{this.props.formPageStatus(true);this.setState({location:null,shortForecast:null,country:null});}} id = "returnbutton">Return</button></div></div>);
         }
@@ -261,6 +278,7 @@ componentWillUnmount()
           return (<div class = "mainpage">
           <div onClick = {()=>{this.changeDisplayLabelStatus(true)}} id = "entirepage">
           </div>
+          <div id = "loadingBar" >LOADING</div>
           <div id = "labelcontainer">
             <label id = "citylabel">Enter your location</label>
           </div>

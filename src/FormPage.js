@@ -17,7 +17,7 @@ class Formpage extends React.Component
       this.changeDisplayLabelStatus = this.changeDisplayLabelStatus.bind(this);
       this.updateInput = this.updateInput.bind(this);
       this.inputbox = React.createRef();
-      
+
 
 }
 
@@ -102,7 +102,7 @@ class Formpage extends React.Component
 
 
 
-    return(<div class = "mainpage">
+    return(<div class = "mainpage"><div id = "pagetitle">Weather Finder</div><div id = "myname">App by Dalton Cornwell</div>
     <div onClick = {()=>{this.changeDisplayLabelStatus(true)}} id = "entirepage">
     </div>
     <div id = "labelcontainer">

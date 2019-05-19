@@ -2,7 +2,7 @@
 body{
   font-family: 'Oswald', sans-serif;
   color:white;
-  background: rgba(30, 144, 255, 0.7);
+  //background: rgba(30, 144, 255, 0.7);
 }
 
 
@@ -20,7 +20,7 @@ body{
   width:200px;
   height:50px;
   position:relative;
-  color:black;
+  color:white;
 }
 #city
 {
